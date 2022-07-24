@@ -7,6 +7,10 @@
   - [Encapsulation](./object-oriented/ecapsulation.md)
   - [Inheritance]()
   - [Polymorphism]()
+- [Borrow Checker]()
+- [Functional Programming]()
+- [Error Handling]()
+- [Concurrency]()
 
 ---
 
