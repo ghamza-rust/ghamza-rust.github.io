@@ -1,8 +1,8 @@
 # Ecapsulation
 
-Encapsulation is cited as part of the definition of OO because OO Languages provide easy and effective encapsulation of data and functions.
+Because OO languages make it simple and efficient to encapsulate data and functions, encapsulation is included as part of the definition of OO.
 
-This idea is certainly not unique to OO. Indeed, we had perfect encapsulation in C. Consider this simple C program:
+This concept is not specific to OO. In C, we did, in fact, have complete encapsulation. Take a look at this basic C program:
 
 ```c
 // point.h
@@ -23,20 +23,20 @@ struct point_t {
 };
 
 point_t* new_point(double x, double y) {
-    point_t* p = malloc(sizeof(point_t));
+    point_t *p = malloc(sizeof(point_t));
     p->x = x;
     p->y = y;
     return p;
 }
 
-double distance(point_t* p1, point_t* p2) {
+double distance(point_t *p1, point_t *p2) {
     double dx = p1->x - p2->x;
     double dy = p1->y - p2->y;
     return sqrt(dx * dx + dy * dy);
 }
 ```
 
-We can compile `point.c`, get an object file. The `point.h` header client will know nothing about the inner structure of the point or the implementation of the functions.
+We can compile `point.c` and get an object file. The `point.h` header client will know nothing about neither the interiors of the `point_t` nor the implementation of the functions.
 
 ```bash
 gcc -c point.c
@@ -47,10 +47,10 @@ gcc -c point.c
 #include "point.h"
 #include <stdio.h>
 
-int main(int argc, char** argv) {
-    point_t* origin = new_point(0.0, 0.0);
-    point_t* upperRight = new_point(1.0, 1.0);
-    printf("distance=%f\n", distance(origin, upperRight));
+int main() {
+    point_t *p1 = new_point(0.0, 0.0);
+    point_t *p2 = new_point(1.0, 1.0);
+    printf("distance=%f\n", distance(p1, p2));
 }
 ```
 
@@ -60,9 +60,9 @@ gcc main.c -o main point.o
 # distance=1.414214
 ```
 
-But then came OO in the form of C++, and the perfect encapsulation of C was broken.
+Encapsulation was weakened when OO in the form of C++ was introduced.
 
-The C++ compiler needs to know the size of the instances of each class, so it needs the member variables of a class to be declared in the header file of that class. So our `Point` program changed to look like this:
+The member variables of a class must be stated in the header file of that class in order for the C++ compiler to know the size of the instances of each class. So our `Point` program changed to look like this:
 
 ```cpp
 // point.h
@@ -90,14 +90,12 @@ double Point::distance(const Point& p) const {
 }
 ```
 
-Clients of the header file `point.h` know about the member variables x and y!
-The compiler will prevent access to them, but the client still knows they exist.
-For example, if those member names are changed, the `point.cc` file must be recompiled! Encapsulation has been broken.
+Clients of the header file `point.h` are aware of the members of `Point`. Although the C++ compiler forbids direct access to them, the header client is nevertheless aware of their existence. And unlike C, where we just said that a struct called `point_t` existed, `point.cc` needs to be recompiled if those member names change.
 
-Indeed, encapsulation is partially repaired by introducing the `public`, `private`, and `protected` keywords into the language. This, however, was a _hack_ necessitated by the technical need for the compiler to see those variables in the header file.
+By implementing a _hacky_ method and employing the access modifiers `public`, `private`, and `protected`, encapsulation was partially repaired.
 
-Java and C# completely abolished the header/implementation split, thereby weakening encapsulation even more. In these languages, it is impossible to separate the declaration and definition of a class.
+Other OO languages like Java and C# completely abolished the header/implementation distinction, which decreased encapsulation. In these languages, a class' declaration and definition cannot be separated.
 
 For these reasons, it isn't easy to accept that OO depends on solid encapsulation. Indeed, many OO languages have little or no enforced encapsulation.
 
-OO certainly does depend on the idea that programmers are well-behaved enough not to circumvent encapsulated data. Even so, the languages that claim to provide OO have only weakened the once perfect encapsulation we enjoyed with C.
+OO certainly does depend on the idea that programmers are well-behaved enough not to circumvent encapsulated data.
