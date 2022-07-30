@@ -170,8 +170,8 @@
 <p>Another standard answer to this question is &quot;A way to model the real world.&quot; This statement is intended to imply that OO makes software easier to understand because it has a closer relationship to the real world - but even that statement is evasive and too loosely defined. It does not tell us what OO is.</p>
 <p>Some folks fall back on three magic words to explain the nature of OO: <em>encapsulation</em>, <em>inheritance</em>, and <em>polymorphism</em>. The implication is that OO is the proper admixture of these three things or at least an OO language must support these three things.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ecapsulation"><a class="header" href="#ecapsulation">Ecapsulation</a></h1>
-<p>Encapsulation is cited as part of the definition of OO because OO Languages provide easy and effective encapsulation of data and functions.</p>
-<p>This idea is certainly not unique to OO. Indeed, we had perfect encapsulation in C. Consider this simple C program:</p>
+<p>Because OO languages make it simple and efficient to encapsulate data and functions, encapsulation is included as part of the definition of OO.</p>
+<p>This concept is not specific to OO. In C, we did, in fact, have complete encapsulation. Take a look at this basic C program:</p>
 <pre><code class="language-c">// point.h
 typedef struct point_t point_t;
 point_t* new_point(double x, double y);
@@ -188,37 +188,37 @@ struct point_t {
 };
 
 point_t* new_point(double x, double y) {
-    point_t* p = malloc(sizeof(point_t));
+    point_t *p = malloc(sizeof(point_t));
     p-&gt;x = x;
     p-&gt;y = y;
     return p;
 }
 
-double distance(point_t* p1, point_t* p2) {
+double distance(point_t *p1, point_t *p2) {
     double dx = p1-&gt;x - p2-&gt;x;
     double dy = p1-&gt;y - p2-&gt;y;
     return sqrt(dx * dx + dy * dy);
 }
 </code></pre>
-<p>We can compile <code>point.c</code>, get an object file. The <code>point.h</code> header client will know nothing about the inner structure of the point or the implementation of the functions.</p>
+<p>We can compile <code>point.c</code> and get an object file. The <code>point.h</code> header client will know nothing about neither the interiors of the <code>point_t</code> nor the implementation of the functions.</p>
 <pre><code class="language-bash">gcc -c point.c
 </code></pre>
 <pre><code class="language-c">// main.c
 #include &quot;point.h&quot;
 #include &lt;stdio.h&gt;
 
-int main(int argc, char** argv) {
-    point_t* origin = new_point(0.0, 0.0);
-    point_t* upperRight = new_point(1.0, 1.0);
-    printf(&quot;distance=%f\n&quot;, distance(origin, upperRight));
+int main() {
+    point_t *p1 = new_point(0.0, 0.0);
+    point_t *p2 = new_point(1.0, 1.0);
+    printf(&quot;distance=%f\n&quot;, distance(p1, p2));
 }
 </code></pre>
 <pre><code class="language-bash">gcc main.c -o main point.o
 ./main
 # distance=1.414214
 </code></pre>
-<p>But then came OO in the form of C++, and the perfect encapsulation of C was broken.</p>
-<p>The C++ compiler needs to know the size of the instances of each class, so it needs the member variables of a class to be declared in the header file of that class. So our <code>Point</code> program changed to look like this:</p>
+<p>Encapsulation was weakened when OO in the form of C++ was introduced.</p>
+<p>The member variables of a class must be stated in the header file of that class in order for the C++ compiler to know the size of the instances of each class. So our <code>Point</code> program changed to look like this:</p>
 <pre><code class="language-cpp">// point.h
 class Point {
 public:
@@ -241,13 +241,11 @@ double Point::distance(const Point&amp; p) const {
     return sqrt(dx * dx + dy * dy);
 }
 </code></pre>
-<p>Clients of the header file <code>point.h</code> know about the member variables x and y!
-The compiler will prevent access to them, but the client still knows they exist.
-For example, if those member names are changed, the <code>point.cc</code> file must be recompiled! Encapsulation has been broken.</p>
-<p>Indeed, encapsulation is partially repaired by introducing the <code>public</code>, <code>private</code>, and <code>protected</code> keywords into the language. This, however, was a <em>hack</em> necessitated by the technical need for the compiler to see those variables in the header file.</p>
-<p>Java and C# completely abolished the header/implementation split, thereby weakening encapsulation even more. In these languages, it is impossible to separate the declaration and definition of a class.</p>
+<p>Clients of the header file <code>point.h</code> are aware of the members of <code>Point</code>. Although the C++ compiler forbids direct access to them, the header client is nevertheless aware of their existence. And unlike C, where we just said that a struct called <code>point_t</code> existed, <code>point.cc</code> needs to be recompiled if those member names change.</p>
+<p>By implementing a <em>hacky</em> method and employing the access modifiers <code>public</code>, <code>private</code>, and <code>protected</code>, encapsulation was partially repaired.</p>
+<p>Other OO languages like Java and C# completely abolished the header/implementation distinction, which decreased encapsulation. In these languages, a class' declaration and definition cannot be separated.</p>
 <p>For these reasons, it isn't easy to accept that OO depends on solid encapsulation. Indeed, many OO languages have little or no enforced encapsulation.</p>
-<p>OO certainly does depend on the idea that programmers are well-behaved enough not to circumvent encapsulated data. Even so, the languages that claim to provide OO have only weakened the once perfect encapsulation we enjoyed with C.</p>
+<p>OO certainly does depend on the idea that programmers are well-behaved enough not to circumvent encapsulated data.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="references"><a class="header" href="#references">References</a></h1>
 <ul>
 <li><a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Language</a></li>
