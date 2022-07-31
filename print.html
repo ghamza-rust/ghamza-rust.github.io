@@ -141,10 +141,10 @@
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>This book is going to cover the Rust programming language. First, let us get motivated.</p>
 <p>Some people decided to learn rust because it has been the most loved language for seven years.</p>
-<p>Others are interested in what problems it solves. After all, technology has a purpose of fulfilling.</p>
+<p>Others are interested in what problems it solves.</p>
 <p>Some geeks might only be interested in how rust works. They heard about the rust's ownership. In a typical software, you either manually manage the memory or throw this responsibility to a garbage collector, a software that runs alongside yours. Rust ensures memory safety without other software running on the side.</p>
 <p>Or you might be looking at the new generation programming language and find a &quot;Go vs. Rust.&quot;</p>
-<p>For most people, its all of the above, having a language that is loved by a lot of people, being compared to both system language (such as C/C++) and application language (such as Go), and the curiosity about how the rust's ownership and borrow checker work is what attract engineers to learn rust.</p>
+<p>For most people, it is all of the above, having a language that is loved by a lot of people, being compared to both system language (such as C/C++) and application language (such as Go), and the curiosity about how the rust's ownership and borrow checker work is what attract engineers to learn rust.</p>
 <p>This also covers general software engineering concepts to better understand Rust.</p>
 <hr />
 <p>The purpose of rust is to be a system language, so most of the talk will be regarding how the system works.</p>
@@ -172,7 +172,7 @@
 <p>One answer to this question is &quot;The combination of data and function.&quot; Although often cited, this is a very unsatisfying answer because it implies that <code>o.f()</code> is somehow different from <code>f(o)</code>. This is absurd.</p>
 <p>Another standard answer to this question is &quot;A way to model the real world.&quot; This statement is intended to imply that OO makes software easier to understand because it has a closer relationship to the real world - but even that statement is evasive and too loosely defined. It does not tell us what OO is.</p>
 <p>Some folks fall back on three magic words to explain the nature of OO: <em>encapsulation</em>, <em>inheritance</em>, and <em>polymorphism</em>. The implication is that OO is the proper admixture of these three things or at least an OO language must support these three things.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="ecapsulation"><a class="header" href="#ecapsulation">Ecapsulation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h1>
 <p>Because OO languages make it simple and efficient to encapsulate data and functions, encapsulation is included as part of the definition of OO.</p>
 <p>This concept is not specific to OO. In C, we did, in fact, have complete encapsulation. Take a look at this basic C program:</p>
 <pre><code class="language-c">// point.h
