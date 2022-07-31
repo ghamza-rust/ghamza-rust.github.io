@@ -4,3 +4,8 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Yet Another Rust Book"
+
+[output.html]
+git-repository-url = "https://github.com/ghamza-rust/ghamza-rust.github.io"
+git-repository-icon = "fa-github"
+cname = "rust-book.ghamza.dev"
