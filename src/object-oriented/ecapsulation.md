@@ -1,4 +1,4 @@
-# Ecapsulation
+# Encapsulation
 
 Because OO languages make it simple and efficient to encapsulate data and functions, encapsulation is included as part of the definition of OO.
 
