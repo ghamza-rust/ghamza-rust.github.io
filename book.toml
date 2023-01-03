@@ -9,3 +9,7 @@ title = "Yet Another Rust Book"
 git-repository-url = "https://github.com/ghamza-rust/ghamza-rust.github.io"
 git-repository-icon = "fa-github"
 cname = "rust-book.ghamza.dev"
+
+[preprocessor.plantuml]
+plantuml-cmd = "http://www.plantuml.com/plantuml"
+use-data-uris = true
